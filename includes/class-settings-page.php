@@ -6,7 +6,7 @@ defined('ABSPATH') || exit;
 class Settings_Page {
     public static function academy_settings() {
         ?>
-        
+        <div id="academy-settings-app"></div>
         <?php
     }
     public static function qr_code_settings() {
