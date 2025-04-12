@@ -9,9 +9,4 @@ class Settings_Page {
         <div id="academy-settings-app"></div>
         <?php
     }
-    public static function qr_code_settings() {
-        ?>
-        
-        <?php
-    }
 }

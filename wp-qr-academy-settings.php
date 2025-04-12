@@ -3,7 +3,8 @@
  * Plugin Name: WP QR Academy Settings
  * Description: Adds QR Code and Academy settings menu using OOP & Singleton Pattern.
  * Version: 1.0
- * Author: Your Name
+ * Author: Devrupash
+ * Author URI: https://devrupash.com
  */
 
 defined('ABSPATH') || exit;

@@ -14,6 +14,12 @@ class Plugin_Core {
         add_action('plugins_loaded', [$this, 'admin_menu']);
         add_action('admin_enqueue_scripts', [$this, 'admin_enqueue_assets']);
     }
+    
+    private function register_constants() {
+        define('WP_QR_ACADEMY_PLUGIN_DIR', plugin_dir_path(__FILE__));
+        define('WP_QR_ACADEMY_PLUGIN_URL', plugin_dir_url(__FILE__));
+    }
+    
 
     public static function get_instance() {
         if (self::$instance === null) {
@@ -25,7 +31,12 @@ class Plugin_Core {
     public function admin_menu() {
         Admin_Menu::get_instance();
     }
-    public function admin_enqueue_assets() {
+    public function admin_enqueue_assets($hook) {
+
+        if('toplevel_page_academy_settings' !== $hook){
+            return;
+        }
+        
         $main_asset = require WP_QR_ACADEMY_PLUGIN_DIR . '../assets/js/settings/main.asset.php';
         wp_enqueue_script(
             'wp-qr-academy-custom-js',
@@ -34,10 +45,6 @@ class Plugin_Core {
             $main_asset['version'],
             true
         );
+        wp_enqueue_style( 'wp-components' );
     }
-    private function register_constants() {
-        define('WP_QR_ACADEMY_PLUGIN_DIR', plugin_dir_path(__FILE__));
-        define('WP_QR_ACADEMY_PLUGIN_URL', plugin_dir_url(__FILE__));
-    }
-    
 }
